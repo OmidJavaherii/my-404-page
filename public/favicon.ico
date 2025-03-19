@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background -->
+  <rect width="64" height="64" fill="#1a1a2e" rx="8" ry="8" />
+  
+  <!-- 404 Text -->
+  <text x="32" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ff2a6d">404</text>
+  
+  <!-- Error Icon -->
+  <g transform="translate(32, 20) scale(0.4)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#05d9e8" stroke-width="3" />
+    <line x1="-8" y1="-8" x2="8" y2="8" stroke="#05d9e8" stroke-width="3" />
+    <line x1="8" y1="-8" x2="-8" y2="8" stroke="#05d9e8" stroke-width="3" />
+  </g>
+</svg> 
