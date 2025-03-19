@@ -1,10 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
 
-interface Error404Props {}
+// Language content
+const translations = {
+  en: {
+    title: "404",
+    mainMessage: "Happy 404 Day, Developers! 🎉",
+    subMessage: "No server here, no running code, just a cool error!",
+    buttonText: "Try Again (Maybe you'll get lucky!)",
+    systemRebooting: "SYSTEM_REBOOTING...",
+    footer: "system.error.log"
+  },
+  fa: {
+    title: "۴۰۴",
+    mainMessage: "سال ۴۰۴ مبارک برنامه‌نویس‌ها! 🎉",
+    subMessage: "اینجا نه سرور پیدا می‌شه، نه کدت اجرا می‌شه، فقط یه ارور با حال!",
+    buttonText: "تلاش دوباره (شاید این بار شانس بیاری!)",
+    systemRebooting: "سیستم در حال راه‌اندازی مجدد...",
+    footer: "سیستم.خطا.گزارش"
+  }
+};
 
 function App() {
   const [hoverButton, setHoverButton] = useState<boolean>(false);
   const [countdown, setCountdown] = useState<number>(5);
+  const [language, setLanguage] = useState<"en" | "fa">("fa");
   const [errorCodes, setErrorCodes] = useState<string[]>([
     "ERR_CONNECTION_REFUSED",
     "HTTP_404_NOT_FOUND",
@@ -33,6 +52,10 @@ function App() {
   const retry = useCallback((): void => {
     window.location.reload();
   }, []);
+
+  const toggleLanguage = useCallback(() => {
+    setLanguage(prev => prev === "en" ? "fa" : "en");
+  }, []);
   
   // تایپ برای آیتم‌های بارون باینری
   interface BinaryItem {
@@ -58,6 +81,9 @@ function App() {
   // Static grid lines for cyberpunk effect
   const gridLines = Array.from({ length: 10 }, (_, i) => i);
 
+  const content = translations[language];
+  const rtlClass = language === "fa" ? "rtl" : "ltr";
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white font-mono overflow-hidden relative">
       {/* Background effects */}
@@ -80,6 +106,14 @@ function App() {
           />
         ))}
       </div>
+      
+      {/* Language toggle button */}
+      <button 
+        onClick={toggleLanguage}
+        className="absolute top-4 left-4 glass-effect px-3 py-1 w-24 h-10 rounded-full text-sm z-30 hover:bg-white/10 transition-colors flex items-center justify-center"
+      >
+        <span className={language === "en" ? "font-persian" : ""}>{language === "en" ? "فارسی" : "English"}</span>
+      </button>
       
       {/* Glowing orb background */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-600/20 blur-3xl animate-pulse-slow z-0"></div>
@@ -112,22 +146,22 @@ function App() {
       </div>
       
       {/* Content container with glass effect */}
-      <div className="z-10 glass-effect rounded-xl p-8 max-w-lg w-full text-center relative overflow-hidden animate-float">
+      <div className={`z-10 glass-effect rounded-xl p-8 max-w-lg w-full text-center relative overflow-hidden animate-float ${rtlClass}`}>
         <div className="absolute inset-0 bg-shimmer"></div>
         
         {/* Simple 404 without glitch effects */}
         <h1 className="text-8xl md:text-9xl font-bold text-pink-600 mb-2 drop-shadow-[0_0_10px_#ff0066]">
-          404
+          {content.title}
         </h1>
 
-        {/* پیام اصلی */}
-        <p className="text-xl md:text-2xl mt-6 text-center font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-          !سال ۴۰۴ مبارک برنامه‌نویس‌ها 🎉
+        {/* Main message */}
+        <p className={`text-xl md:text-2xl mt-6 text-center font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 ${language === "fa" ? "font-persian" : ""}`}>
+          {content.mainMessage}
         </p>
 
-        {/* پیام فرعی */}
-        <p className="text-base md:text-lg text-gray-300 mt-4 text-center px-4 leading-relaxed">
-          اینجا نه سرور پیدا می‌شه، نه کدت اجرا می‌شه، فقط یه ارور با حال!
+        {/* Sub message */}
+        <p className={`text-base md:text-lg text-gray-300 mt-4 text-center px-4 leading-relaxed ${language === "fa" ? "font-persian" : ""}`}>
+          {content.subMessage}
         </p>
         
         {/* Loading fake progress bar */}
@@ -135,20 +169,20 @@ function App() {
           <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500" 
                style={{ width: `${(5 - countdown) * 20}%` }}></div>
         </div>
-        <div className="flex justify-between text-xs text-gray-500 mt-1 px-1">
-          <span>SYSTEM_REBOOTING...</span>
+        <div className={`flex justify-between text-xs text-gray-500 mt-1 px-1 ${language === "fa" ? "font-persian" : ""}`}>
+          <span>{content.systemRebooting}</span>
           <span>{`${(5 - countdown) * 20}%`}</span>
         </div>
         
-        {/* دکمه تلاش دوباره */}
+        {/* Try again button */}
         <button
           onClick={retry}
           onMouseEnter={() => setHoverButton(true)}
           onMouseLeave={() => setHoverButton(false)}
-          className="mt-8 px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full hover:from-pink-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 relative overflow-hidden"
+          className={`mt-8 px-8 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full hover:from-pink-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 relative overflow-hidden ${language === "fa" ? "font-persian" : ""}`}
         >
           <span className={`absolute inset-0 bg-shimmer ${hoverButton ? 'opacity-100' : 'opacity-0'}`}></span>
-          <span className="relative z-10">تلاش دوباره (شاید این بار شانس بیاری!)</span>
+          <span className="relative z-10">{content.buttonText}</span>
         </button>
       </div>
       
@@ -199,7 +233,7 @@ function App() {
       
       {/* Terminal footer */}
       <div className="absolute bottom-0 left-0 right-0 h-6 bg-black/20 text-xs text-green-500/60 z-20 flex items-center justify-between px-4">
-        <div>system.error.log</div>
+        <div className={language === "fa" ? "font-persian" : ""}>{content.footer}</div>
         <div className="flex space-x-4">
           <div>[ x: {Math.floor(Math.random() * 1000)} ]</div>
           <div>[ y: {Math.floor(Math.random() * 1000)} ]</div>

@@ -3,6 +3,7 @@
 :root {
   --font-mono: 'Share Tech Mono', monospace;
   --font-display: 'Orbitron', sans-serif;
+  --font-persian: 'Vazirmatn', sans-serif;
 }
 
 body {
@@ -14,6 +15,31 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+}
+
+/* RTL support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-persian);
+}
+
+.rtl h1, 
+.rtl h2, 
+.rtl h3, 
+.rtl h4, 
+.rtl h5, 
+.rtl h6 {
+  font-family: var(--font-persian);
+  font-weight: 700;
+}
+
+.rtl .text-center {
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @keyframes glitch {
@@ -100,5 +126,9 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+  }
+
+  .font-persian {
+    font-family: var(--font-persian);
   }
 }
