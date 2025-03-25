@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 const translations = {
   en: {
     title: "404",
-    mainMessage: "Happy 404 Day, Developers! 🎉",
+    mainMessage: "Happy 404 Year, Developers! 🎉",
     subMessage: "No server here, no running code, just a cool error!",
     buttonText: "Try Again (Maybe you'll get lucky!)",
     systemRebooting: "SYSTEM_REBOOTING...",
