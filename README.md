@@ -1,57 +1,110 @@
+# Custom 404 Page
 # Haapy Your New Year
 I wish you good luck
+A modern, animated 404 page built with Next.js 14 and Tailwind CSS. This project features a clean, minimalist design with smooth animations and a user-friendly interface.
 
-# React + TypeScript + Vite
+## 🌟 Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **Modern Design**
+  - Clean and minimalist layout
+  - Gradient background
+  - Smooth fade-in animations
+  - Responsive design for all devices
 
-Currently, two official plugins are available:
+- **User Experience**
+  - Clear error messaging
+  - Easy navigation back to home
+  - Smooth animations
+  - Mobile-friendly interface
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Technical Features**
+  - Built with Next.js 14
+  - Tailwind CSS for styling
+  - TypeScript for type safety
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
+- Node.js 18.17 or later
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/omidjavaherii/my-404-page.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd my-404-page
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🛠️ Built With
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+
+## 🎨 Customization
+
+### Colors
+The theme colors can be customized in `tailwind.config.ts`:
+```typescript
+colors: {
+  primary: {
+    DEFAULT: '#046D8B',
+    dark: '#035A73',
   },
-})
+  // ... other colors
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Content
+- Update the error message in `src/app/not-found.tsx`
+- Modify the button text and styling
+- Customize the background gradient
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Project Structure
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+my-404-page/
+├── src/
+│   ├── app/
+│   │   ├── not-found.tsx    # 404 page component
+│   │   └── layout.tsx       # Root layout
+│   ├── components/
+│   │   └── ui/             # UI components
+│   └── styles/             # Global styles
+└── package.json
+```
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 🤝 Contact
+
+Project Link: [https://github.com/omidjavaherii/my-404-page](https://github.com/omidjavaherii/my-404-page)
